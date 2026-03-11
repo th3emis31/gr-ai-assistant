@@ -870,25 +870,17 @@ async function callAI(userMsg) {
 
   try {
 
-    const res = await fetch("https://api.anthropic.com/v1/messages",{
+    const res = await fetch("https://gr-ai-server.onrender.com/chat", {
 
       method:"POST",
 
       headers:{
-        "Content-Type":"application/json",
-        "x-api-key":"sk-ant-api03-XXXX",
-        "anthropic-version":"2023-06-01"
+        "Content-Type":"application/json"
       },
 
       body:JSON.stringify({
 
-        model:"claude-sonnet-4-20250514",
-
-        max_tokens:1000,
-
-        system:SYSTEM_PROMPT,
-
-        messages:history
+        message:userMsg
 
       })
 
@@ -896,7 +888,7 @@ async function callAI(userMsg) {
 
     const data = await res.json();
 
-    return data.content?.[0]?.text || "Sorry, I had trouble responding. Please email info@grmaintenance.co.uk.";
+    return data.reply || "Sorry, I had trouble responding. Please email info@grmaintenance.co.uk.";
 
   }
 
