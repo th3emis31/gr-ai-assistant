@@ -6,6 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req,res)=>{
+  res.send("GR AI Server Running");
+});
+
 const API_KEY = process.env.OPENAI_API_KEY;
 
 app.post("/chat", async (req, res) => {
@@ -58,4 +62,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, ()=>{
 console.log("AI server running on port " + PORT);
 });
-
