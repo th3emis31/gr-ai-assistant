@@ -4,8 +4,7 @@ const fetch = require("node-fetch");
 const app = express();
 app.use(express.json());
 
-const API_KEY = "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";
-  
+const API_KEY = process.env.OPENAI_API_KEY;
 
 app.post("/chat", async (req, res) => {
 
