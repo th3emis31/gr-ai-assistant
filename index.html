@@ -1042,16 +1042,29 @@ function getAdvice() {
 // AI assistant connection
 async function askAI(message){
 
-  const res = await fetch("https://gr-ai-server.onrender.com/chat",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({message:message})
-  });
+  try {
 
-  const data = await res.json();
-  return data.reply;
+    const res = await fetch("https://gr-ai-server.onrender.com/chat",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({message:message})
+    });
+
+    if(!res.ok){
+      throw new Error("Server error");
+    }
+
+    const data = await res.json();
+
+    return data.reply || "Sorry, I couldn't generate a response.";
+
+  } catch(err){
+
+    return "The AI assistant is waking up. Please try again in a few seconds.";
+
+  }
 
 }
 
