@@ -451,24 +451,24 @@ footer { background:var(--dark);border-top:1px solid rgba(201,162,39,.15);paddin
 
         <div class="form-grid2">
           <div class="fg">
-            <label class="flabel">First Name *</label>
-            <input type="text" class="finput" name="first_name" placeholder="John" required>
+            <label class="flabel" for="firstName">First Name *</label>
+            <input type="text" class="finput" id="firstName" name="first_name" placeholder="John" autocomplete="given-name" required>
           </div>
           <div class="fg">
-            <label class="flabel">Last Name</label>
-            <input type="text" class="finput" name="last_name" placeholder="Smith">
+            <label class="flabel" for="lastName">Last Name</label>
+            <input type="text" class="finput" id="lastName" name="last_name" placeholder="Smith" autocomplete="family-name">
           </div>
           <div class="fg">
-            <label class="flabel">Email *</label>
-            <input type="email" class="finput" name="email" placeholder="john@example.com" required>
+            <label class="flabel" for="emailField">Email *</label>
+            <input type="email" class="finput" id="emailField" name="email" placeholder="john@example.com" autocomplete="email" required>
           </div>
           <div class="fg">
-            <label class="flabel">Phone</label>
-            <input type="tel" class="finput" name="phone" placeholder="07700 900000">
+            <label class="flabel" for="phoneField">Phone</label>
+            <input type="tel" class="finput" id="phoneField" name="phone" placeholder="07700 900000" autocomplete="tel">
           </div>
           <div class="fg full">
-            <label class="flabel">Service Required *</label>
-            <select class="fselect" name="service" required>
+            <label class="flabel" for="serviceField">Service Required *</label>
+            <select class="fselect" id="serviceField" name="service" autocomplete="off" required>
               <option value="" disabled selected>Select a service…</option>
               <option>Refurbishment</option>
               <option>General Building</option>
@@ -480,8 +480,8 @@ footer { background:var(--dark);border-top:1px solid rgba(201,162,39,.15);paddin
             </select>
           </div>
           <div class="fg full">
-            <label class="flabel">Project Details</label>
-            <textarea class="ftextarea" name="details" placeholder="Tell us about your project — location, scope, timeline…"></textarea>
+            <label class="flabel" for="detailsField">Project Details</label>
+            <textarea class="ftextarea" id="detailsField" name="details" autocomplete="off" placeholder="Tell us about your project — location, scope, timeline…"></textarea>
           </div>
         </div>
 
@@ -566,7 +566,7 @@ footer { background:var(--dark);border-top:1px solid rgba(201,162,39,.15);paddin
     <div class="chip" onclick="sendChip('Are you insured and accredited?')">Insured?</div>
   </div>
   <div class="chat-input-row" id="chatInputRow">
-    <input type="text" class="chat-input" id="chatInput" placeholder="Ask anything about GR Maintenance…" onkeydown="if(event.key==='Enter')sendMessage()">
+    <input type="text" class="chat-input" id="chatInput" placeholder="Ask anything about GR Maintenance…" autocomplete="off" onkeydown="if(event.key==='Enter')sendMessage()">
     <button class="chat-send" onclick="sendMessage()"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
   </div>
 
@@ -743,7 +743,7 @@ function switchTab(name, el) {
 
 // ── CHAT ──
 // ⚙️  After deploying your Cloudflare Worker, paste your Worker URL below:
-const AI_PROXY_URL = 'https://YOUR-WORKER.YOUR-NAME.workers.dev';
+const AI_PROXY_URL = 'https://gr-ai-server.onrender.com';
 
 const chatHistory = [];
 
